@@ -2,47 +2,30 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8" />
-	<title>Quick Diff Online Tool</title>
-	<script type="text/javascript" src="diff.js"> </script>
-	<link rel="stylesheet" type="text/css" href="styles.css"/>
-	<script>
-		function hideshow() {
-			if (document.getElementById('how_to_use').className=='hide')
-				document.getElementById('how_to_use').className='show'
-			else
-				document.getElementById('how_to_use').className='hide';
-		}
+	<title>Diff Tool</title>
 
-		function init() {
-			document.getElementById('how_to_use').className='hide';
-		}
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="diff.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('textarea').on('keyup', function(){
+				$('#diffForm').submit();
+			});
+		});
 	</script>
 </head>
 <body>
-	<h1 style="clear:both;">An Online Tool to do a 'quick and dirty' diff of two text or code fragments</h1>
-
-	<div style="clear:both;" id="wrapper">
-		<form action="#" id="diffForm">
-			<div class="clearfix">
-				<p class="links">
-					<label for="een">Left</label>
-					<textarea name="een" id="een" cols="30" rows="10"></textarea>
-				</p>
-				<p class="rechts">
-					<label for="twee">Right</label>
-					<textarea name="twee" id="twee" cols="30" rows="10"></textarea>
-				</p>
-			</div>
-			<p class="button"><input type="submit" class="awesome white" value="Compare" /></p>
+	<div class="wrap">
+		<form action="#" id="diffForm" class="form">
+			<h1>Diff Tool</h1>
+			<textarea id="textOne" placeholder="Paste original here..."></textarea>
+			<textarea id="textTwo" placeholder="Paste changed here..."></textarea>
+			<button type="submit">Run</button>
 		</form>
-		<table>
-			<thead>
-				<tr>
-					<th colspan="3">Output</th>
-				</tr>
-			</thead>
-			<tbody id="res"></tbody>
-		</table>
+		<div class="result">
+			<table id="diffResult"></table>
+		</div>
 	</div>
 </body>
 </html>
