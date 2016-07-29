@@ -18,7 +18,7 @@ function maakRij(x, y, type, rij){
 	
 	var txt1 = document.createTextNode(y);
 	var txt2 = document.createTextNode(x);
-	var txt3 = document.createTextNode(type + ' ' + rij);
+	var txt3 = document.createTextNode(rij);
 	
 	td1.appendChild(txt1);
 	td2.appendChild(txt2);
@@ -84,9 +84,9 @@ function clearTableBody(){
 }
 
 window.onload = function(){
-	var een = document.getElementById('een');
-	var twee = document.getElementById('twee');
-	tableBody = document.getElementById('res');
+	var een = document.getElementById('textOne');
+	var twee = document.getElementById('textTwo');
+	tableBody = document.getElementById('diffResult');
 	
 	document.getElementById('diffForm').onsubmit = function(){
 		clearTableBody();
